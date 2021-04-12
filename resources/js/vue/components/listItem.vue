@@ -20,12 +20,25 @@ export default {
     props: ["item"],
     methods: {
         updateCheck() {
-            axios.put("api/item/" + this.item.id, {
+            axios
+                .put("api/item/" + this.item.id, {
                     item: this.item
                 })
                 .then(response => {
                     if (response.status == 200) {
                         this.$emit("itemChanged");
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        removeItem() {
+            axios
+                .delete("api/item/" + this.item.id)
+                .then(response => {
+                    if (response.status == 200) {
+                        this.$emit("itemRemoved");
                     }
                 })
                 .catch(error => {

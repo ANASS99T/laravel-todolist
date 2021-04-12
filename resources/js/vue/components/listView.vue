@@ -5,6 +5,7 @@
                 :item="item" 
                 class="item"
                 v-on:itemChanged="$emit('reloadList')"
+                v-on:itemRemoved="$emit('reloadList')"
             />
         </div>
     </div>
